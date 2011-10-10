@@ -2,7 +2,8 @@
 Django CMS simple poll plugin
 =============================
 
-Simple poll plugin for `Django CMS <http://django-cms.org>`_.
+Simple poll plugin for `Django CMS <http://django-cms.org>`_. An
+online example is available at `modoboa.org <http://modoboa.org>`_.
 
 Requirements
 ============
@@ -17,7 +18,7 @@ If you want to use the poll plugin into your project, just follow this
 procedure:
 
 #. Open the *settings.py* file and add ``cmsplugin_poll`` to the
-``INSTALLED_APPS`` variable
+   ``INSTALLED_APPS`` variable
 
 #. Run the following command::
 
