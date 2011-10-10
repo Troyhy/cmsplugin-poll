@@ -1,0 +1,11 @@
+{% load i18n %}
+<h3>{% trans "Previous polls" %}</h3>
+{% if polls %}
+<ul>
+  {% for poll in polls %}
+  <li><a href="{% url cmsplugin_poll.views.results poll.id %}">{{ poll.question }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>{% trans "No polls are available." %}</p>
+{% endif %}

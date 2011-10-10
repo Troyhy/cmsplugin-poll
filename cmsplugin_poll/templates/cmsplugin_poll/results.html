@@ -1,0 +1,16 @@
+{% load i18n poll_tags %}
+<h2>{% trans "Poll results" %}</h2>
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}.</span>
+  {% endfor %}
+</div>
+{% endif %}
+<h3>{{ poll.question }}</h3>
+<ul>
+{% for choice in poll.choice_set.all %}
+    <li>{{ choice.choice }} ({{ choice.votes }} vote{{ choice.votes|pluralize }}, {% get_choice_rate poll choice %})</li>
+    <div name="choice" id="{{ choice.votes }}"></div>
+{% endfor %}
+</ul>
