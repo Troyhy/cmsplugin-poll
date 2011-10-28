@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import os
 
 setup(
     name = "cmsplugin-poll",
@@ -27,10 +28,5 @@ setup(
         ],
     include_package_data = True,
     zip_safe = False,
-    install_requires = ['setuptools'],
-    requires = [
-        'django-cms (>= 2.2)',
-        'south'
-        ],
-    )
-    
+    install_requires = ['setuptools', 'django-cms', 'south'],
+   ) 
