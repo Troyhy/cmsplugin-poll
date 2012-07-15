@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 
+
 class Poll(models.Model):
     question = models.CharField(_('question'), max_length=300)
     pub_date = models.DateTimeField(_('date published'))
@@ -10,6 +11,7 @@ class Poll(models.Model):
     class Meta:
         verbose_name = _('Poll')
         verbose_name_plural = _('Polls')
+        ordering = ('-pub_date',)
 
     def __unicode__(self):
         return unicode(self.question)
@@ -19,16 +21,14 @@ class Poll(models.Model):
 
     @property
     def votes(self):
-        res = 0
-        for c in self.choice_set.all():
-            res += c.votes
-        return res
+        return self.choice_set.aggregate(models.Sum('votes'))['votes__sum']
 
     def getrate(self, choice):
         total = self.votes
         if not total:
             return total
-        return choice.votes / float(total) * 100.0
+        return 100.0 * choice.votes / float(total)
+
 
 class Choice(models.Model):
     poll = models.ForeignKey(Poll, verbose_name=_('poll'))
@@ -42,6 +42,7 @@ class Choice(models.Model):
     def __unicode__(self):
         return '%s (%s)' % (self.choice, self.poll)
 
+
 class PollPlugin(CMSPlugin):
     poll = models.ForeignKey(Poll, verbose_name=_("Poll to display"))
 
@@ -54,4 +55,3 @@ class PollPlugin(CMSPlugin):
 
     def __str__(self):
         return self.poll.question
-

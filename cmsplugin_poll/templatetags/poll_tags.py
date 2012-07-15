@@ -6,7 +6,8 @@ register = Library()
 
 @register.simple_tag
 def get_latest_polls(count=5):
-    polls = Poll.objects.all().order_by("-pub_date")[:5]
+    "FIXME: I'm useless!"
+    polls = Poll.objects.all()[:5]
     return render_to_string("cmsplugin_poll/latest_polls.html", {
             "polls" : polls
             })
