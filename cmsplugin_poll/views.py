@@ -9,38 +9,37 @@ from models import Poll, Choice
 
 def index(request):
     polls = Poll.objects.iterator()
-    return render_to_response("cmsplugin_poll/latest_polls.html", {
-            "polls": polls
-            })
+    c = RequestContext(request, {'polls': polls})
+    return render_to_response('cmsplugin_poll/latest_polls.html', c)
 
 
 def detail(request, poll_id):
-    p = get_object_or_404(Poll, pk=poll_id)
-    return render_to_response("cmsplugin_poll/detail.html", {"poll": p},
-                              context_instance=RequestContext(request))
+    poll = get_object_or_404(Poll, pk=poll_id)
+    c = RequestContext(request, {'poll': poll})
+    return render_to_response('cmsplugin_poll/detail.html', c)
 
 
 def vote(request, poll_id):
-    p = get_object_or_404(Poll, pk=poll_id)
-    if p.close_date is not None:
+    poll = get_object_or_404(Poll, pk=poll_id)
+    if poll.close_date is not None:
         messages.error(request, _("This poll is closed"))
-    elif request.session.get("poll_%d" % p.id, False):
+    elif request.session.get("poll_%d" % poll.id, False):
         messages.error(request, _("You already vote for this poll"))
     else:
         try:
-            selected_choice = p.choice_set.get(pk=request.POST['choice'])
+            selected_choice = poll.choice_set.get(pk=request.POST['choice'])
         except (KeyError, Choice.DoesNotExist):
             messages.error(request, _("You didn't select a choice"))
         else:
             selected_choice.votes += 1
             selected_choice.save()
             messages.info(request, _("Thank you for your vote"))
-            request.session["poll_%d" % p.id] = True
-    return HttpResponseRedirect(reverse('cmsplugin_poll.views.results',
-                                        args=(p.id,)))
+            request.session["poll_%d" % poll.id] = True
+    url = request.POST.get('next', poll.get_absolute_url())
+    return HttpResponseRedirect(url)
 
 
 def results(request, poll_id):
-    p = get_object_or_404(Poll, pk=poll_id)
-    return render_to_response('cmsplugin_poll/results.html', {'poll': p},
-                              context_instance=RequestContext(request))
+    poll = get_object_or_404(Poll, pk=poll_id)
+    c = RequestContext(request, {'poll': poll})
+    return render_to_response('cmsplugin_poll/results.html', c)

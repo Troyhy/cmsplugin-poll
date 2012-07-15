@@ -19,6 +19,10 @@ class Poll(models.Model):
     def __repr__(self):
         return unicode(self)
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('cmsplugin_poll.views.detail', (self.id,))
+
     @property
     def votes(self):
         return self.choice_set.aggregate(models.Sum('votes'))['votes__sum']

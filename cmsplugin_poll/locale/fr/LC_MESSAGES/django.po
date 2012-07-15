@@ -8,44 +8,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin_poll 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-15 22:58+0200\n"
-"PO-Revision-Date: 2012-07-15 22:58+0200\n"
+"POT-Creation-Date: 2012-07-16 22:58+0200\n"
+"PO-Revision-Date: 2012-07-15 00:59+0200\n"
 "Last-Translator: Bertrand Bordage <bordage.bertrand@gmail.com>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:8
+#: admin.py:9
 msgid "Close selected polls"
 msgstr "Clore les sondages sélectionnés"
 
-#: admin.py:17
+#: admin.py:20
 msgid "Date information"
 msgstr "Informations de date"
 
-#: cms_plugins.py:8
+#: cms_plugins.py:9
 msgid "Simple poll"
 msgstr "Sondage simple"
 
-#: models.py:6
+#: models.py:7
 msgid "question"
 msgstr "question"
 
-#: models.py:7
+#: models.py:8
 msgid "date published"
 msgstr "date de publication"
 
-#: models.py:8
+#: models.py:9
 msgid "date closed"
 msgstr "date de clôture"
 
-#: models.py:11
-#: templates/cmsplugin_poll/detail.html:2
+#: models.py:12
+#: templates/cmsplugin_poll/detail.html:40
 msgid "Poll"
 msgstr "Sondage"
 
-#: models.py:12
+#: models.py:13
 msgid "Polls"
 msgstr "Sondages"
 
@@ -69,46 +69,50 @@ msgstr "Choix"
 msgid "Choices"
 msgstr "Choix"
 
-#: models.py:46
+#: models.py:47
 msgid "Poll to display"
 msgstr "Sondage à afficher"
 
-#: models.py:49
+#: models.py:50
 msgid "Poll plugin"
 msgstr "Bloc de sondage"
 
-#: models.py:50
+#: models.py:51
 msgid "Poll plugins"
 msgstr "Blocs de sondage"
 
-#: views.py:23
+#: views.py:26
 msgid "This poll is closed"
 msgstr "Ce sondage est clos"
 
-#: views.py:25
+#: views.py:28
 msgid "You already vote for this poll"
 msgstr "Vous avez déjà voté dans ce sondage"
 
-#: views.py:30
+#: views.py:33
 msgid "You didn't select a choice"
 msgstr "Vous n'avez pas sélectionné de choix"
 
-#: views.py:34
+#: views.py:37
 msgid "Thank you for your vote"
 msgstr "Merci d'avoir voté"
 
-#: templates/cmsplugin_poll/detail.html:11
+#: templates/cmsplugin_poll/detail.html:63
 msgid "Vote"
 msgstr "Voter"
 
-#: templates/cmsplugin_poll/latest_polls.html:2
+#: templates/cmsplugin_poll/detail.html:66
+msgid "Please vote to see the results."
+msgstr "Veuillez voter pour voir les résultats."
+
+#: templates/cmsplugin_poll/latest_polls.html:3
 msgid "Previous polls"
 msgstr "Sondages précédents"
 
-#: templates/cmsplugin_poll/latest_polls.html:10
+#: templates/cmsplugin_poll/latest_polls.html:15
 msgid "No polls are available."
 msgstr "Aucun sondage disponible."
 
-#: templates/cmsplugin_poll/results.html:2
+#: templates/cmsplugin_poll/results.html:3
 msgid "Poll results"
 msgstr "Résultat du sondage"
