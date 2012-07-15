@@ -13,8 +13,8 @@ class ChoiceInline(admin.TabularInline):
 
 class PollAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,                  {"fields": ["question"]}),
-        ("Date information",    {"fields": ["pub_date"]})
+        (None,                     {"fields": ["question"]}),
+        (_("Date information"),    {"fields": ["pub_date"]})
         ]
     inlines = [ChoiceInline]
     actions = [make_closed]

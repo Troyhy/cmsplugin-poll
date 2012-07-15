@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 
 class CMSPollPlugin(CMSPluginBase):
     model = PollPlugin
-    name = _("Simple poll plugin")
+    name = _("Simple poll")
     render_template = "cmsplugin_poll/detail.html"
 
     def render(self, context, instance, placeholder):
