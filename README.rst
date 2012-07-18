@@ -2,8 +2,7 @@
 Django CMS simple poll plugin
 =============================
 
-Simple poll plugin for `Django CMS <http://django-cms.org>`_. An
-online example is available at `modoboa.org <http://modoboa.org>`_.
+Simple poll plugin for `Django CMS <http://django-cms.org>`_.
 
 Requirements
 ============
