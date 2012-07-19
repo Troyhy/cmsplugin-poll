@@ -1,2 +1,2 @@
-include README.rst
-recursive-include cmsplugin_poll/templates *.html
+include README.rst COPYING
+recursive-include cmsplugin_poll *.html *.po *.mo
