@@ -9,6 +9,7 @@ Requirements
 
 * `Django CMS >= 2.2 <http://django-cms.org>`_
 * `South >= 0.7.3 <http://south.aeracode.org/>`_
+* `Django > 1.4`_
 
 Installation
 ============
