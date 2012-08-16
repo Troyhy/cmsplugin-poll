@@ -2,6 +2,9 @@ from django.template import Library
 from django.template.loader import render_to_string
 from cmsplugin_poll.models import Poll
 
+# backport django 1.4 assignment_tag 
+if not hasattr(Library,"assignment_tag"):
+    import assignment_tag
 register = Library()
 
 
