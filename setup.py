@@ -6,7 +6,7 @@ setup(
     packages = find_packages(),
     version = "0.3",
     description = "Simple poll plugin for django-cms 2.2",
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
     author = "Antoine Nguyen",
     author_email = "tonio@ngyn.org",
     url = "http://bitbucket.org/tonioo/cmsplugin-poll",
