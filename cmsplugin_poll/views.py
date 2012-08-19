@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from models import Poll, Choice
+from models import Poll, Choice, UserChoice
 
 
 def index(request):
@@ -33,6 +33,12 @@ def vote(request, poll_id):
         else:
             selected_choice.votes += 1
             selected_choice.save()
+            if poll.track_user and  not request.user.is_anonymous():
+                record = UserChoice(choice=selected_choice,
+                                    user=request.user,
+                                    poll=poll)
+                record.save()
+                
             messages.info(request, _("Thank you for your vote"))
             request.session["poll_%d" % poll.id] = True
     url = request.POST.get('next', poll.get_absolute_url())

@@ -21,9 +21,12 @@ def get_latest_polls(count=5):
 def get_choice_rate(poll, choice):
     return "%d%%" % poll.getrate(choice)
 
+@register.assignment_tag
+def get_user_choices(poll, user):
+    return poll.get_user_choices(user)
 
 @register.assignment_tag
 def show_results(request, poll):
     poll_is_closed = poll.close_date is not None
-    session_has_voted = request.session.get("poll_%d" % poll.id, False)
+    session_has_voted = poll.has_user_voted(request)
     return poll_is_closed or session_has_voted
